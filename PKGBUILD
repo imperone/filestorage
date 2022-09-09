@@ -86,7 +86,7 @@ setup_mariadb_cpp_connector_ubuntu() {
 ubuntu_pkginstall() {
 	sudo apt-get update && sudo apt-get upgrade -y
 	echo " [INFO] Installing filestorage dependencies..."
-	sudo apt-get install -y lua5.3 mariadb
+	sudo apt-get install -y lua5.3 liblua5.3-dev libmariadb-dev
 	setup_mariadb_cpp_connector_ubuntu
 	echo " [INFO] Done."
 }
