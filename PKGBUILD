@@ -68,8 +68,7 @@ sha256sums=(${sha256sums[@]} "b779c3b156cf7a57ce789d6fee4fc991ccc2913774d26c909d
 source=(${source[@]} ${external[@]})
 
 setup_mariadb_cpp_connector_ubuntu() {
-	sudo apt-get update
-	sudo sh apt-get install -y git cmake make gcc libssl-dev
+	sudo apt-get install -y git cmake make gcc libssl-dev
 	git clone https://github.com/MariaDB-Corporation/mariadb-connector-cpp.git
 	mkdir build && cd build || echo "Can't create subdirectory 'build'. Exiting..." && exit
 	cmake ../mariadb-connector-cpp/ -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCONC_WITH_UNIT_TESTS=Off -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_SSL=OPENSSL
@@ -79,7 +78,7 @@ setup_mariadb_cpp_connector_ubuntu() {
 }
 
 ubuntu_pkginstall() {
-	sudo apt-get update
+	sudo apt-get update && sudo apt-get upgrade -y
 	sudo apt-get install -y lua5.3 mariadb
 	setup_mariadb_cpp_connector_ubuntu
 }
