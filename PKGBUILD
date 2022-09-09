@@ -75,10 +75,12 @@ setup_mariadb_cpp_connector_ubuntu() {
 	cmake ../mariadb-connector-cpp/ -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCONC_WITH_UNIT_TESTS=Off -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_SSL=OPENSSL
 	cmake --build . --config RelWithDebInfo
 	sudo make install
+	cd ..
 }
 
 ubuntu_pkginstall() {
-	sudo apt-get install lua5.3 mariadb
+	sudo apt update && sudo apt upgrade
+	sudo apt install lua5.3 mariadb
 	setup_mariadb_cpp_connector_ubuntu
 }
 
