@@ -79,8 +79,8 @@ setup_mariadb_cpp_connector_ubuntu() {
 }
 
 ubuntu_pkginstall() {
-	sudo apt update && sudo apt upgrade
-	sudo apt install lua5.3 mariadb
+	sudo apt-get update
+	sudo apt-get install -y lua5.3 mariadb
 	setup_mariadb_cpp_connector_ubuntu
 }
 
