@@ -72,7 +72,7 @@ setup_mariadb_cpp_connector_ubuntu() {
 	sudo apt-get install -y git cmake make gcc libssl-dev
 	git clone https://github.com/MariaDB-Corporation/mariadb-connector-cpp.git
 	echo " [INFO] Changing to build directory..."
-	mkdir build && cd build || echo "Can't create subdirectory 'build'. Exiting..." && exit
+	mkdir build && cd build || echo "Can't create subdirectory 'build'. Exiting..." && return
 	echo " [INFO] CMaking..."
 	cmake ../mariadb-connector-cpp/ -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCONC_WITH_UNIT_TESTS=Off -DCMAKE_INSTALL_PREFIX=/usr/local -DWITH_SSL=OPENSSL
 	echo " [INFO] Building..."
