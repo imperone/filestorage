@@ -3,9 +3,9 @@ name: C/C++ CI
 on:
   pull_request:
   push:
-    branches: 
-    - master
-    - devel
+    branches:
+      - master
+      - devel
 
 jobs:
   build:
@@ -14,13 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-      
-    - name: Initialize
-      run: 'cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DPACKAGE_VERSION="github-actions" -DAPPNAME="filestorage" .'
-      
-    - name: Build
-      run: make -j 6
-      
-    - name: Check
-      run: filestorage
+      - uses: actions/checkout@v3
+
+      - name: Build project
+        run: sudo bash -c ". ./PKGBUILD && ubuntu_pkginstall && notarch_prepare && build && notarch_package"
+
+      - name: Check
+        run: filestorage
